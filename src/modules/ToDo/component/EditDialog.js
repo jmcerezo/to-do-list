@@ -24,6 +24,12 @@ const EditDialog = () => {
     handleClose();
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSave();
+    }
+  };
+
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
@@ -38,6 +44,7 @@ const EditDialog = () => {
             variant="standard"
             defaultValue={task.name}
             onChange={(e) => setValue(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
         </DialogContent>
         <DialogActions>

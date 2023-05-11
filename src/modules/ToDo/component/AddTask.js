@@ -12,7 +12,7 @@ const AddTask = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (value.trim().length === 0) {
@@ -42,6 +42,12 @@ const AddTask = () => {
     setValue("");
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
       <SnackbarAlert />
@@ -54,13 +60,14 @@ const AddTask = () => {
                 variant="outlined"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
+                onKeyPress={handleKeyPress}
                 sx={{ width: "100%" }}
               />
             </Grid>
             <Grid item xs={3}>
               <Button
                 variant="contained"
-                onClick={onSubmit}
+                onClick={handleSubmit}
                 sx={{ height: "100%", width: "100%" }}
               >
                 <AddBoxIcon />
