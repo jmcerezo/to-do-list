@@ -22,7 +22,7 @@ const CompletedTasks = () => {
   const completedTasks = tasks.filter((t) => t.completed);
   const dispatch = useDispatch();
 
-  const onToggle = (id) => {
+  const handleToggle = (id) => {
     dispatch(toggleTask(id));
     dispatch(
       openSnackbar({
@@ -33,11 +33,11 @@ const CompletedTasks = () => {
     );
   };
 
-  const onEdit = (task) => {
+  const handleEdit = (task) => {
     dispatch(openEditDialog({ open: true, task }));
   };
 
-  const onDelete = (id) => {
+  const handleDelete = (id) => {
     dispatch(deleteTask(id));
     dispatch(
       openSnackbar({
@@ -74,7 +74,7 @@ const CompletedTasks = () => {
                     edge="end"
                     aria-label="delete"
                     onClick={() => {
-                      onDelete(task.id);
+                      handleDelete(task.id);
                     }}
                   >
                     <DeleteIcon />
@@ -90,7 +90,7 @@ const CompletedTasks = () => {
                       disableRipple
                       inputProps={{ "aria-labelledby": labelId }}
                       onClick={() => {
-                        onToggle(task.id);
+                        handleToggle(task.id);
                       }}
                     />
                   </ListItemIcon>
@@ -98,7 +98,7 @@ const CompletedTasks = () => {
                     id={labelId}
                     primary={task.name}
                     onClick={() => {
-                      onEdit(task);
+                      handleEdit(task);
                     }}
                   />
                 </ListItemButton>
