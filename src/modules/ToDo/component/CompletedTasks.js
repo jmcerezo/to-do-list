@@ -4,6 +4,7 @@ import {
   toggleTask,
   deleteTask,
   openSnackbar,
+  openEditDialog,
 } from "../../../slices/todoSlice";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -14,6 +15,7 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SnackbarAlert from "./SnackbarAlert";
+import EditDialog from "./EditDialog";
 
 const CompletedTasks = () => {
   const tasks = useSelector((state) => state.todo.tasks);
@@ -31,6 +33,10 @@ const CompletedTasks = () => {
     );
   };
 
+  const onEdit = (task) => {
+    dispatch(openEditDialog({ open: true, task }));
+  };
+
   const onDelete = (id) => {
     dispatch(deleteTask(id));
     dispatch(
@@ -45,6 +51,7 @@ const CompletedTasks = () => {
   return (
     <>
       <SnackbarAlert />
+      <EditDialog />
       {completedTasks.length ? (
         <List
           sx={{
@@ -87,7 +94,13 @@ const CompletedTasks = () => {
                       }}
                     />
                   </ListItemIcon>
-                  <ListItemText id={labelId} primary={task.name} />
+                  <ListItemText
+                    id={labelId}
+                    primary={task.name}
+                    onClick={() => {
+                      onEdit(task);
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             );

@@ -5,6 +5,7 @@ export const todoSlice = createSlice({
   initialState: {
     tasks: [],
     alert: { open: false, severity: "", message: "" },
+    edit: { open: false, task: {} },
   },
   reducers: {
     addTask: (state, action) => {
@@ -30,6 +31,20 @@ export const todoSlice = createSlice({
         }),
       };
     },
+    editTask: (state, action) => {
+      return {
+        ...state,
+        tasks: state.tasks.map((task) => {
+          if (task.id === action.payload.id) {
+            return {
+              ...task,
+              name: action.payload.name,
+            };
+          }
+          return task;
+        }),
+      };
+    },
     deleteTask: (state, action) => {
       return {
         ...state,
@@ -40,10 +55,20 @@ export const todoSlice = createSlice({
       const { open, severity, message } = action.payload;
       return { ...state, alert: { open, severity, message } };
     },
+    openEditDialog: (state, action) => {
+      const { open, task } = action.payload;
+      return { ...state, edit: { open, task } };
+    },
   },
 });
 
-export const { addTask, toggleTask, deleteTask, openSnackbar } =
-  todoSlice.actions;
+export const {
+  addTask,
+  toggleTask,
+  editTask,
+  deleteTask,
+  openEditDialog,
+  openSnackbar,
+} = todoSlice.actions;
 
 export default todoSlice.reducer;
