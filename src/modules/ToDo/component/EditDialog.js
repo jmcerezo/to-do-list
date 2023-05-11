@@ -7,7 +7,11 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useDispatch, useSelector } from "react-redux";
-import { editTask, openEditDialog } from "../../../slices/todoSlice";
+import {
+  editTask,
+  openEditDialog,
+  openSnackbar,
+} from "../../../slices/todoSlice";
 
 const EditDialog = () => {
   const { open, task } = useSelector((state) => state.todo.edit);
@@ -19,14 +23,46 @@ const EditDialog = () => {
     setValue("");
   };
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault();
+    let editInput = document.querySelector("#editInput");
+
+    if (editInput.value.trim().length === 0) {
+      dispatch(
+        openSnackbar({
+          open: true,
+          severity: "error",
+          message: "Value cannot be empty!",
+        })
+      );
+
+      setValue("");
+
+      return;
+    }
+
+    if (editInput.value.trim().length < 3) {
+      dispatch(
+        openSnackbar({
+          open: true,
+          severity: "error",
+          message: "Enter at least 3 characters!",
+        })
+      );
+
+      setValue("");
+
+      return;
+    }
+
     dispatch(editTask({ id: task.id, name: value.length ? value : task.name }));
+
     handleClose();
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleSave();
+      handleSave(e);
     }
   };
 
@@ -38,6 +74,7 @@ const EditDialog = () => {
           <DialogContentText></DialogContentText>
           <TextField
             autoFocus
+            id="editInput"
             margin="dense"
             type="text"
             fullWidth

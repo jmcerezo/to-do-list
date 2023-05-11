@@ -29,6 +29,20 @@ const AddTask = () => {
       return;
     }
 
+    if (value.trim().length < 3) {
+      dispatch(
+        openSnackbar({
+          open: true,
+          severity: "error",
+          message: "Enter at least 3 characters!",
+        })
+      );
+
+      setValue("");
+
+      return;
+    }
+
     dispatch(addTask(value));
 
     dispatch(
