@@ -9,9 +9,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 });
 
 const SnackbarAlert = () => {
-  const open = useSelector((state) => state.todo.alert.open);
-  const severity = useSelector((state) => state.todo.alert.severity);
-  const message = useSelector((state) => state.todo.alert.message);
+  const { open, severity, message } = useSelector((state) => state.todo.alert);
   const dispatch = useDispatch();
 
   const handleClose = (event, reason) => {
