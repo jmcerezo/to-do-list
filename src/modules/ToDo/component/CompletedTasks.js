@@ -1,7 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTask, deleteTask } from "../../../slices/taskSlice";
-import { openSnackbar } from "../../../slices/alertSlice";
+import {
+  toggleTask,
+  deleteTask,
+  openSnackbar,
+} from "../../../slices/todoSlice";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -13,7 +16,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SnackbarAlert from "./SnackbarAlert";
 
 const CompletedTasks = () => {
-  const tasks = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => state.todo.tasks);
   const completedTasks = tasks.filter((t) => t.completed);
   const dispatch = useDispatch();
 

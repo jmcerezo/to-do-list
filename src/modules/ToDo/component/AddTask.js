@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../../slices/taskSlice";
+import { addTask, openSnackbar } from "../../../slices/todoSlice";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import SnackbarAlert from "./SnackbarAlert";
-import { openSnackbar } from "../../../slices/alertSlice";
 
 const AddTask = () => {
   const [value, setValue] = useState("");

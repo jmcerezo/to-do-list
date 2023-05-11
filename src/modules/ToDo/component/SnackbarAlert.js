@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { openSnackbar } from "../../../slices/alertSlice";
+import { openSnackbar } from "../../../slices/todoSlice";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
@@ -9,9 +9,9 @@ const Alert = forwardRef(function Alert(props, ref) {
 });
 
 const SnackbarAlert = () => {
-  const open = useSelector((state) => state.alert.open);
-  const severity = useSelector((state) => state.alert.severity);
-  const message = useSelector((state) => state.alert.message);
+  const open = useSelector((state) => state.todo.alert.open);
+  const severity = useSelector((state) => state.todo.alert.severity);
+  const message = useSelector((state) => state.todo.alert.message);
   const dispatch = useDispatch();
 
   const handleClose = (event, reason) => {
