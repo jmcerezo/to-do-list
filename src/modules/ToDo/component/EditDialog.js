@@ -4,7 +4,6 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -71,7 +70,6 @@ const EditDialog = () => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Edit task</DialogTitle>
         <DialogContent>
-          <DialogContentText></DialogContentText>
           <TextField
             autoFocus
             id="editInput"
@@ -81,7 +79,7 @@ const EditDialog = () => {
             variant="standard"
             defaultValue={task.name}
             onChange={(e) => setValue(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyUp={handleKeyPress}
           />
         </DialogContent>
         <DialogActions>
