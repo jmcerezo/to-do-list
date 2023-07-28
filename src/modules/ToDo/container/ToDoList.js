@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import AddTask from "../component/AddTask";
 import ActiveTasks from "../component/ActiveTasks";
 import CompletedTasks from "../component/CompletedTasks";
+import About from "../component/About";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -50,12 +51,16 @@ const ToDoList = () => {
         >
           <Tab label="Active" {...a11yProps(0)} />
           <Tab label="Completed" {...a11yProps(1)} />
+          <Tab label="About" {...a11yProps(2)} />
         </Tabs>
         <TabPanel value={value} index={0}>
           <ActiveTasks />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <CompletedTasks />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <About />
         </TabPanel>
       </Box>
     </>
