@@ -74,7 +74,7 @@ const AddTask = () => {
                 variant="outlined"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyUp={handleKeyPress}
                 sx={{ width: "100%" }}
               />
             </Grid>
