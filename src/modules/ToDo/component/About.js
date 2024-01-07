@@ -7,7 +7,7 @@ const About = () => {
       <p>To-Do List React App</p>
       <p>made by JM Cerezo</p>
       <a
-        href="https://github.com/jmccerezo/to-do-list"
+        href="https://github.com/jmcerezo/to-do-list"
         target="_blank"
         style={{
           textDecoration: "none",
