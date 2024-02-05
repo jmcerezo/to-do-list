@@ -1,33 +1,31 @@
-# To-Do-List
+# To-Do List
 
-A simple To-Do List app
+A simple To-Do List app.
 
 ## Features
 
-- Webpack for overall bundling
-- React.js library for web app development
-- Material UI & React Bootstrap for responsive UIs
-- React Redux for state management
+- Add, edit and delete task.
+- Mark task as completed.
 
 ## Run Locally
 
-Download the repository
+Download or clone the repository.
 
-Go to the project directory
+Go to the project directory.
 
-Install dependencies(npm):
+Install the dependencies:
 
 ```bash
   npm install
 ```
 
-Start the webpack development server(npm):
+Start the development server:
 
 ```bash
   npm run serve
 ```
 
-Build your work (npm, target ES6)
+Build the app:
 
 ```bash
   npm run build
